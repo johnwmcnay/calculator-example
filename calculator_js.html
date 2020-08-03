@@ -5,22 +5,24 @@
     <title>Calculator</title>
 </head>
 <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/calculator.js"></script>
+
 
 <!-- TODO add css to make the caluclator more aesthetically pleasing -->
 <!-- TODO add keyboard input in addition to click buttons -->
 
-    <div>TODO input and calculations will show up here</div>
-    <button onclick="">7</button>
-    <button onclick="">8</button>
-    <button onclick="">9</button><br>
-    <button onclick="">4</button>
-    <button onclick="">5</button>
-    <button onclick="">6</button><br>
-    <button onclick="">1</button>
-    <button onclick="">2</button>
-    <button onclick="">3</button><br>
-    <button onclick="">0</button>
+    <div id="screen">TODO input and calculations will show up here</div>
+    <button onclick="enterNumber(7)">7</button>
+    <button onclick="enterNumber(8)">8</button>
+    <button onclick="enterNumber(9)">9</button><br>
+    <button onclick="enterNumber(4)">4</button>
+    <button onclick="enterNumber(5)">5</button>
+    <button onclick="enterNumber(6)">6</button><br>
+    <button onclick="enterNumber(1)">1</button>
+    <button onclick="enterNumber(2)">2</button>
+    <button onclick="enterNumber(3)">3</button><br>
+    <button onclick="enterNumber(0)">0</button>
     <button onclick="">.</button><br>
     <button onclick="">+</button>
     <button onclick="">-</button>
@@ -28,6 +30,8 @@
     <button onclick="">/</button>
     <button onclick="">=</button>
     <button onclick="">AC</button>
+
+
 
 </body>
 </html>
