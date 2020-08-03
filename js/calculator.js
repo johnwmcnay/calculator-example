@@ -8,10 +8,11 @@
 // });
 
 var screenText = '0.';
+var freshScreen = true;
 
 function enterNumber(num) {
 
-    var test = 'the test worked';
+    //var test = 'the test worked';
     //receives input based on button clicked
     // either:
     //    -a numeral is pressed updating the number
@@ -19,6 +20,12 @@ function enterNumber(num) {
     //    -clear is pressed and makes the number 0
 
     $(function(){
-        $("#screen").text(test);
+        var currentText = $("#screen").text();
+        if (freshScreen) {
+            currentText = ''
+            freshScreen = false;
+        }
+        
+        $("#screen").text(currentText + num);
     });
 }
