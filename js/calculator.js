@@ -53,17 +53,15 @@ function handleNumber(num) {
     //    -a numeral is pressed updating the number
     //    -a calculation is pressed, arithmetic is performed, update the number
     //    -clear is pressed and makes the number 0
-    var currentText = $("#screen").text();
-    if (freshScreen) {
-        freshScreen = false;
-        currentText = '';
-    }
+    var screen = $("#screen");
+    var screenText = screen.text();
 
-    if (num === 0) {
-        console.log("zero pressed");
-        //handleZero()
+    if (freshScreen && num !== 0) {
+        freshScreen = false;
+        screen.text(num);
     } else {
-        $("#screen").text(currentText + num);
+        if (screenText !== "0")
+            screen.text(screenText + num);
     }
 
 }
@@ -80,5 +78,13 @@ const handleOperator = op => {
 };
 
 const handleDecimal = () => {
-    console.log("decimal pressed");
+    var screen = $("#screen");
+
+    if (freshScreen) {
+        freshScreen = false;
+        screen.text("0.");
+    } else if (screen.text().indexOf(".") === -1) {
+        screen.text(screen.text() + ".");
+    }
+
 };
