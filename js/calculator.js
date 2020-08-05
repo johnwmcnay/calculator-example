@@ -7,8 +7,6 @@
 //     });
 // });
 
-
-
 // var screenText = '0';
 var freshScreen = true;
 const zeroKey = 48, nineKey = 57;
@@ -93,8 +91,6 @@ const handleOperator = op => {
     var screen = $("#screen");
     var screenText = screen.text();
 
-    console.log("last char", screenText[screenText.length - 1] !== " ");
-
     if (!freshScreen && (screenText[screenText.length - 1] !== " ") )
         screen.text(screenText + " " + operatorStr(op) + " ");
 
@@ -102,12 +98,17 @@ const handleOperator = op => {
 
 const handleDecimal = () => {
     var screen = $("#screen");
+    var screenText = screen.text();
 
     if (freshScreen) {
         freshScreen = false;
         screen.text("0.");
-    } else if (screen.text().indexOf(".") === -1) {
-        screen.text(screen.text() + ".");
+    } else if (screenText.indexOf(".") === -1) {
+        if (screenText[screenText.length - 1] === " ") {
+            screen.text(screenText + "0.");
+        } else {
+            screen.text(screenText + ".");
+        }
     }
 
 };
