@@ -74,10 +74,13 @@ function handleNumber(num) {
         freshScreen = false;
         screen.text(num);
     } else {
-        if (screenText !== "0")
-            screen.text(screenText + num);
-    }
 
+        if (screenText !== "0") {
+            if (screenText[screenText.length - 1] !== " " || num > 0) {
+                screen.text(screenText + num);
+            }
+        }
+    }
 }
 
 //clears the screen wiping out any progress
