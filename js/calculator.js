@@ -19,6 +19,12 @@ const decimalPressed = key => {
     return (key === 190);
 };
 
+const operatorStr = operator => {
+    const ops = ["+", "-", "/", "x"];
+
+    return ops[operatorKeys.indexOf(operator)];
+}
+
 //returns whether or not the key code is for the + - x / operators
 const isAnOperator = key => {
     return (operatorKeys.indexOf(key) !== -1);
@@ -27,6 +33,10 @@ const isAnOperator = key => {
 //returns true or false if the argument is a keyCode between 0 and 9
 const pressedANumber = key => {
     return (key >= zeroKey && key <= nineKey);
+};
+
+const enterPressed = key => {
+    return (key === 13);
 };
 
 //keydown event to handle keyboard inputs as well
@@ -40,9 +50,15 @@ $(document).keydown(function(keyPressed) {
     } else if (isAnOperator(key)) {
         handleOperator(key);
     } else if (decimalPressed(key)) {
-        handleDecimal()
+        handleDecimal();
+    } else if (enterPressed(key)) {
+        handleEquals();
     }
 });
+
+const handleEquals = () => {
+    console.log("enter/equal pressed");
+}
 
 //updates the screen based on which number is pressed
 function handleNumber(num) {
@@ -74,7 +90,14 @@ const clearScreen = () => {
 
 //+ - / x is passed in and handled to update the screen and calculations
 const handleOperator = op => {
-    console.log("handleOperator ran");
+    var screen = $("#screen");
+    var screenText = screen.text();
+
+    console.log("last char", screenText[screenText.length - 1] !== " ");
+
+    if (!freshScreen && (screenText[screenText.length - 1] !== " ") )
+        screen.text(screenText + " " + operatorStr(op) + " ");
+
 };
 
 const handleDecimal = () => {
