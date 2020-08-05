@@ -7,6 +7,8 @@
 //     });
 // });
 
+
+
 // var screenText = '0';
 var freshScreen = true;
 const zeroKey = 48, nineKey = 57;
@@ -51,23 +53,19 @@ function handleNumber(num) {
     //    -a numeral is pressed updating the number
     //    -a calculation is pressed, arithmetic is performed, update the number
     //    -clear is pressed and makes the number 0
+    var currentText = $("#screen").text();
+    if (freshScreen) {
+        freshScreen = false;
+        currentText = '';
+    }
 
-    $(function(){
-        var currentText = $("#screen").text();
-        if (freshScreen) {
-            currentText = ''
-            freshScreen = false;
-        } else {
-            if (num === 0) {
-                console.log("zero pressed");
-                //handleZero()
-            } else {
-                $("#screen").text(currentText + num);
-            }
-        }
+    if (num === 0) {
+        console.log("zero pressed");
+        //handleZero()
+    } else {
+        $("#screen").text(currentText + num);
+    }
 
-
-    });
 }
 
 //clears the screen wiping out any progress
