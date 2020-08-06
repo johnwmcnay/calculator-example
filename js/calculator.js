@@ -7,7 +7,6 @@
 //     });
 // });
 
-// var screenText = '0';
 var freshScreen = true;
 const zeroKey = 48, nineKey = 57;
 const plusKey = 187, minusKey = 189, divideKey = 191; timesKey = 88;
@@ -55,7 +54,23 @@ $(document).keydown(function(keyPressed) {
 });
 
 const handleEquals = () => {
-    console.log("enter/equal pressed");
+    var screenText = $("#screen").text();
+    var calculationArray = screenText.split(" ");
+
+    while (calculationArray.indexOf("x") !== -1) {
+        var operatorIndex = calculationArray.indexOf("x");
+        var leftNum = calculationArray[operatorIndex - 1]
+        var rightNum = calculationArray[operatorIndex + 1];
+        var calculation = parseFloat(leftNum) * parseFloat(rightNum);
+        var newArray = calculationArray.slice(0, operatorIndex - 1); //6 x 3 x 5
+        console.log(newArray);
+        newArray.push(calculation.toString());
+        console.log(newArray);
+        calculationArray = newArray.concat(calculationArray.slice(operatorIndex + 2));
+        console.log(calculationArray);
+    }
+
+
 }
 
 //updates the screen based on which number is pressed
