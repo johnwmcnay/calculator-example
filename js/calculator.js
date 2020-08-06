@@ -89,19 +89,6 @@ const handleEquals = () => {
             console.log(calculationArray);
         }
     });
-
-    // while (calculationArray.indexOf("x") !== -1) {
-    //     var operatorIndex = calculationArray.indexOf("x");
-    //     var leftNum = calculationArray[operatorIndex - 1]
-    //     var rightNum = calculationArray[operatorIndex + 1];
-    //     var calculation = parseFloat(leftNum) * parseFloat(rightNum);
-    //     var newArray = calculationArray.slice(0, operatorIndex - 1); //6 x 3 x 5
-    //     console.log(newArray);
-    //     newArray.push(calculation.toString());
-    //     console.log(newArray);
-    //     calculationArray = newArray.concat(calculationArray.slice(operatorIndex + 2));
-    //     console.log(calculationArray);
-
 }
 
 //updates the screen based on which number is pressed
@@ -153,6 +140,8 @@ const handleDecimal = () => {
         freshScreen = false;
         screen.text("0.");
     } else if (screenText.indexOf(".") === -1) {
+        //TODO: change it so each entry can hold a decimal by checking only the current one
+
         if (screenText[screenText.length - 1] === " ") {
             screen.text(screenText + "0.");
         } else {
