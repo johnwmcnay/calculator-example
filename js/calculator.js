@@ -53,23 +53,54 @@ $(document).keydown(function(keyPressed) {
     }
 });
 
+const calculate = (num1, op, num2) => {
+    var x = parseFloat(num1);
+    var y = parseFloat(num2);
+
+    switch (op) {
+        case "x":
+            return x * y;
+        case "/":
+            return x / y;
+        case "+":
+            return x + y;
+        case "-":
+            return x - y;
+        default:
+            console.log("Invalid Operator");
+
+    }
+
+};
+
 const handleEquals = () => {
     var screenText = $("#screen").text();
     var calculationArray = screenText.split(" ");
 
-    while (calculationArray.indexOf("x") !== -1) {
-        var operatorIndex = calculationArray.indexOf("x");
-        var leftNum = calculationArray[operatorIndex - 1]
-        var rightNum = calculationArray[operatorIndex + 1];
-        var calculation = parseFloat(leftNum) * parseFloat(rightNum);
-        var newArray = calculationArray.slice(0, operatorIndex - 1); //6 x 3 x 5
-        console.log(newArray);
-        newArray.push(calculation.toString());
-        console.log(newArray);
-        calculationArray = newArray.concat(calculationArray.slice(operatorIndex + 2));
-        console.log(calculationArray);
-    }
+    ["x", "/", "+", "-"].forEach(function(operator) {
+        while (calculationArray.indexOf(operator) !== -1) {
+            var operatorIndex = calculationArray.indexOf(operator);
+            var leftNum = calculationArray[operatorIndex - 1]
+            var rightNum = calculationArray[operatorIndex + 1];
+            var calculation = calculate(leftNum, operator, rightNum);
+            var newArray = calculationArray.slice(0, operatorIndex - 1); //6 x 3 x 5
+            newArray.push(calculation.toString());
+            calculationArray = newArray.concat(calculationArray.slice(operatorIndex + 2));
+            console.log(calculationArray);
+        }
+    });
 
+    // while (calculationArray.indexOf("x") !== -1) {
+    //     var operatorIndex = calculationArray.indexOf("x");
+    //     var leftNum = calculationArray[operatorIndex - 1]
+    //     var rightNum = calculationArray[operatorIndex + 1];
+    //     var calculation = parseFloat(leftNum) * parseFloat(rightNum);
+    //     var newArray = calculationArray.slice(0, operatorIndex - 1); //6 x 3 x 5
+    //     console.log(newArray);
+    //     newArray.push(calculation.toString());
+    //     console.log(newArray);
+    //     calculationArray = newArray.concat(calculationArray.slice(operatorIndex + 2));
+    //     console.log(calculationArray);
 
 }
 
