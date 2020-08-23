@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+button {
+    outline: none;
+    margin: 1px;
+}
+
+.key {
+    border-style: none;
+
+    width: 3em;
+    height: 3em;
+}
+
+.number {
+    background-color: darkolivegreen;
+    color: #eeeeee;
+}
+
+.number:hover {
+    background-color: darkseagreen;
+}
+
+.number:active {
+    background-color: darkolivegreen;
+}
+
+.double {
+    width: calc(6em + 2px);
+}
+
+#keys {
+
+}
+
+.row {
+    display: flex;
+}
+
+#screen {
+
+}

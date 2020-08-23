@@ -7,7 +7,7 @@
 //     });
 // });
 
-var freshScreen = true;
+let freshScreen = true;
 const zeroKey = 48, nineKey = 57;
 const plusKey = 187, minusKey = 189, divideKey = 191; timesKey = 88;
 const operatorKeys = [187, 189, 191, 88];
@@ -54,8 +54,8 @@ $(document).keydown(function(keyPressed) {
 });
 
 const calculate = (num1, op, num2) => {
-    var x = parseFloat(num1);
-    var y = parseFloat(num2);
+    let x = parseFloat(num1);
+    let y = parseFloat(num2);
 
     switch (op) {
         case "x":
@@ -74,16 +74,16 @@ const calculate = (num1, op, num2) => {
 };
 
 const handleEquals = () => {
-    var screenText = $("#screen").text();
-    var calculationArray = screenText.split(" ");
+    let screenText = $("#screen").text();
+    let calculationArray = screenText.split(" ");
 
     ["x", "/", "+", "-"].forEach(function(operator) {
         while (calculationArray.indexOf(operator) !== -1) {
-            var operatorIndex = calculationArray.indexOf(operator);
-            var leftNum = calculationArray[operatorIndex - 1]
-            var rightNum = calculationArray[operatorIndex + 1];
-            var calculation = calculate(leftNum, operator, rightNum);
-            var newArray = calculationArray.slice(0, operatorIndex - 1); //6 x 3 x 5
+            let operatorIndex = calculationArray.indexOf(operator);
+            let leftNum = calculationArray[operatorIndex - 1]
+            let rightNum = calculationArray[operatorIndex + 1];
+            let calculation = calculate(leftNum, operator, rightNum);
+            let newArray = calculationArray.slice(0, operatorIndex - 1); //6 x 3 x 5
             newArray.push(calculation.toString());
             calculationArray = newArray.concat(calculationArray.slice(operatorIndex + 2));
             console.log(calculationArray);
@@ -94,14 +94,14 @@ const handleEquals = () => {
 //updates the screen based on which number is pressed
 function handleNumber(num) {
 
-    //var test = 'the test worked';
+    //let test = 'the test worked';
     //receives input based on button clicked
     // either:
     //    -a numeral is pressed updating the number
     //    -a calculation is pressed, arithmetic is performed, update the number
     //    -clear is pressed and makes the number 0
-    var screen = $("#screen");
-    var screenText = screen.text();
+    let screen = $("#screen");
+    let screenText = screen.text();
 
     if (freshScreen && num !== 0) {
         freshScreen = false;
@@ -124,8 +124,8 @@ const clearScreen = () => {
 
 //+ - / x is passed in and handled to update the screen and calculations
 const handleOperator = op => {
-    var screen = $("#screen");
-    var screenText = screen.text();
+    let screen = $("#screen");
+    let screenText = screen.text();
 
     if (!freshScreen && (screenText[screenText.length - 1] !== " ") )
         screen.text(screenText + " " + operatorStr(op) + " ");
@@ -133,8 +133,8 @@ const handleOperator = op => {
 };
 
 const handleDecimal = () => {
-    var screen = $("#screen");
-    var screenText = screen.text();
+    let screen = $("#screen");
+    let screenText = screen.text();
 
     if (freshScreen) {
         freshScreen = false;

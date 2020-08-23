@@ -3,35 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculator</title>
+    <link rel="stylesheet" href="css/calculator.css">
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="js/calculator.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/calculator.js"></script>
 
 
 <!-- TODO add css to make the caluclator more aesthetically pleasing -->
 <!-- TODO add keyboard input in addition to click buttons -->
+<main>
+    <div id="calculator">
+        <div id="screen">0</div>
+        <div id="keys">
 
-    <div id="screen">0</div>
-    <button onclick="handleNumber(7)">7</button>
-    <button onclick="handleNumber(8)">8</button>
-    <button onclick="handleNumber(9)">9</button><br>
-    <button onclick="handleNumber(4)">4</button>
-    <button onclick="handleNumber(5)">5</button>
-    <button onclick="handleNumber(6)">6</button><br>
-    <button onclick="handleNumber(1)">1</button>
-    <button onclick="handleNumber(2)">2</button>
-    <button onclick="handleNumber(3)">3</button><br>
-    <button onclick="handleNumber(0)">0</button>
-    <button onclick="handleDecimal()">.</button><br>
-    <button onclick="handleOperator(plusKey)">+</button>
-    <button onclick="handleOperator(minusKey)">-</button>
-    <button onclick="handleOperator(timesKey)">x</button><br>
-    <button onclick="handleOperator(divideKey)">/</button>
-    <button onclick="handleEquals()">=</button>
-    <button onclick="clearScreen()">AC</button>
+            <div class="row">
+                <button class="key number" onclick="handleNumber(7)">7</button>
+                <button class="key number" onclick="handleNumber(8)">8</button>
+                <button class="key number" onclick="handleNumber(9)">9</button>
+            </div>
+            <div class="row">
+                <button class="key number" onclick="handleNumber(4)">4</button>
+                <button class="key number" onclick="handleNumber(5)">5</button>
+                <button class="key number" onclick="handleNumber(6)">6</button>
+            </div>
+            <div class="row">
+                <button class="key number" onclick="handleNumber(1)">1</button>
+                <button class="key number" onclick="handleNumber(2)">2</button>
+                <button class="key number" onclick="handleNumber(3)">3</button>
+            </div>
+            <div class="row">
 
+                <button class="key number double" onclick="handleNumber(0)">0</button>
+                <button class="key number" onclick="handleDecimal()">.</button>
+            </div>
+        </div>
 
-
+        <button class="key operator" onclick="handleOperator(plusKey)">+</button>
+        <button class="key operator" onclick="handleOperator(minusKey)">-</button>
+        <button class="key operator" onclick="handleOperator(timesKey)">x</button>
+        <button class="key operator" onclick="handleOperator(divideKey)">/</button>
+        <button class="key operator" onclick="handleEquals()">=</button>
+        <button class="key clear" onclick="clearScreen()">AC</button>
+    </div>
+</main>
 </body>
 </html>
