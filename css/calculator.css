@@ -21,7 +21,7 @@ button {
 .number:hover {
     background-color: darkseagreen;
 }
-/*TODO: light keys up when buttons are pressed */
+
 .number:active {
     background-color: darkolivegreen;
 }
@@ -41,6 +41,9 @@ button {
     height: 40px;
     width: 208px;
     margin: 1px;
+    font-family: 'VT323', monospace;
+    font-size: 36px;
+    padding-right: 4px;
 }
 
 #calculator {
@@ -51,6 +54,7 @@ button {
     padding: 2px;
     border: 2px solid #007069;
     border-radius: 5px;
+    margin: 0 0;
 }
 
 .row {

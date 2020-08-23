@@ -1,4 +1,9 @@
-// TODO add function to update the field and perform calculations
+//TODO: light keys up when buttons are pressed;
+// **turn code into a class**
+// calculation log
+// calculate after a second operator is input, (i.e. "2 + 4 / " turns into "6 / "
+// handle focus of buttons so that pressing enter triggers equals and not a focused button
+// stop using arrow operator to declare functions
 
 // jQuery Example
 // $(function(){
@@ -68,13 +73,13 @@ const calculate = (num1, op, num2) => {
             return x - y;
         default:
             console.log("Invalid Operator");
-
     }
 
 };
 
 const handleEquals = () => {
-    let screenText = $("#screen").text();
+    let screen = $("#screen");
+    let screenText = screen.text();
     let calculationArray = screenText.split(" ");
 
     ["x", "/", "+", "-"].forEach(function(operator) {
@@ -86,9 +91,9 @@ const handleEquals = () => {
             let newArray = calculationArray.slice(0, operatorIndex - 1); //6 x 3 x 5
             newArray.push(calculation.toString());
             calculationArray = newArray.concat(calculationArray.slice(operatorIndex + 2));
-            console.log(calculationArray);
         }
     });
+    screen.text(calculationArray.join(""));
 }
 
 //updates the screen based on which number is pressed
@@ -135,11 +140,22 @@ const handleOperator = op => {
 const handleDecimal = () => {
     let screen = $("#screen");
     let screenText = screen.text();
+    let currentEntry = function() {
+        let operatorIndices = [];
+        let operators = ["+", "-", "/", "x"];
+
+        for (let op of operators) {
+            operatorIndices.push(screenText.lastIndexOf(op));
+        }
+        let index = Math.max(...operatorIndices);
+
+        return screenText.substring(index+1).trim();
+    }();
 
     if (freshScreen) {
         freshScreen = false;
         screen.text("0.");
-    } else if (screenText.indexOf(".") === -1) {
+    } else if (currentEntry.indexOf(".") === -1) {
         //TODO: change it so each entry can hold a decimal by checking only the current one
 
         if (screenText[screenText.length - 1] === " ") {
