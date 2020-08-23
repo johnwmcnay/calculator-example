@@ -156,7 +156,6 @@ const handleDecimal = () => {
         freshScreen = false;
         screen.text("0.");
     } else if (currentEntry.indexOf(".") === -1) {
-        //TODO: change it so each entry can hold a decimal by checking only the current one
 
         if (screenText[screenText.length - 1] === " ") {
             screen.text(screenText + "0.");
