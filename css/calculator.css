@@ -9,7 +9,6 @@ button {
 
 .key {
     border-style: none;
-
     width: 3em;
     height: 3em;
 }
@@ -22,7 +21,7 @@ button {
 .number:hover {
     background-color: darkseagreen;
 }
-
+/*TODO: light keys up when buttons are pressed */
 .number:active {
     background-color: darkolivegreen;
 }
@@ -32,13 +31,55 @@ button {
 }
 
 #keys {
+    display: flex;
 
+}
+
+#screen {
+    text-align: right;
+    background-color: #aaaaaa;
+    height: 40px;
+    width: 208px;
+    margin: 1px;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    background-color: darkslategray;
+    width: 219px;
+    padding: 2px;
+    border: 2px solid #007069;
+    border-radius: 5px;
 }
 
 .row {
     display: flex;
 }
 
-#screen {
+.operator {
+    background-color: cadetblue;
+    color: #eeeeee;
+}
 
+.operator:hover {
+    background-color: darkseagreen;
+}
+
+.clear {
+    background-color: dodgerblue;
+    color: #eeeeee;
+}
+
+.clear:hover {
+    background-color: darkseagreen;
+}
+
+.equal {
+    background-color: dodgerblue;
+    color: #eeeeee;
+}
+
+.equal:hover {
+    background-color: darkseagreen;
 }
