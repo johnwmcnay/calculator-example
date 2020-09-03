@@ -13,6 +13,8 @@
 // });
 
 let freshScreen = true;
+let equalsLastKey = false;
+let operatorLastKey = false;
 const zeroKey = 48, nineKey = 57;
 const plusKey = 187, minusKey = 189, divideKey = 191; timesKey = 88;
 const operatorKeys = [187, 189, 191, 88];
@@ -79,8 +81,20 @@ const calculate = (num1, op, num2) => {
 
 const handleEquals = () => {
     let screen = $("#screen");
+
     let screenText = screen.text();
-    let calculationArray = screenText.split(" ");
+
+    if (operatorLastKey) {
+        return false;
+    }
+
+    if (screenText[screenText.length - 1] === ".") {
+        let newValue = screenText.replace(".", "");
+        screen.text(newValue);
+    }
+
+    let calculationArray = screen.text().split(" ");
+    console.log(calculationArray);
 
     ["x", "/", "+", "-"].forEach(function(operator) {
         while (calculationArray.indexOf(operator) !== -1) {
@@ -94,6 +108,8 @@ const handleEquals = () => {
         }
     });
     screen.text(calculationArray.join(""));
+    equalsLastKey = true;
+    operatorLastKey = false;
 }
 
 //updates the screen based on which number is pressed
@@ -110,12 +126,23 @@ function handleNumber(num) {
 
     if (freshScreen && num !== 0) {
         freshScreen = false;
+        operatorLastKey = false;
+        equalsLastKey = false;
         screen.text(num);
     } else {
 
         if (screenText !== "0") {
             if (screenText[screenText.length - 1] !== " " || num > 0) {
-                screen.text(screenText + num);
+                if (!equalsLastKey) {
+                    operatorLastKey = false;
+                    screen.text(screenText + num);
+                } else {
+                    equalsLastKey = false;
+                    operatorLastKey = false;
+                    screen.text(num);
+                    equalsLastKey = false;
+                }
+
             }
         }
     }
@@ -132,8 +159,15 @@ const handleOperator = op => {
     let screen = $("#screen");
     let screenText = screen.text();
 
-    if (!freshScreen && (screenText[screenText.length - 1] !== " ") )
+
+
+    if (!freshScreen && (screenText[screenText.length - 1] !== " ")) {
         screen.text(screenText + " " + operatorStr(op) + " ");
+        equalsLastKey = false;
+        operatorLastKey = true;
+    }
+
+
 
 };
 
